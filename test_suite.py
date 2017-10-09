@@ -47,7 +47,11 @@ class rozetka_test(unittest.TestCase):
            driver.find_element_by_id("4306").click()                                                                      # Поиск елемента по айди и клик по нему
            WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.LINK_TEXT, "Электрочайники")))               # Ожидание пока елемент не появится
            driver.find_element_by_link_text("Электрочайники").click()                                                     # Поиск елемента по тексту и клик по нему
-
+           WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "//*[@id='content-inner-block']/"
+                                                                                    "div[2]/div/div/div[2]/div/div[1]/"
+                                                                                    "div[1]/div/" \
+                                                                      "div[3]/div/div/div[1]/div[1]/div[1]/div[2]/" \
+                                                                      "div/p/a")))
            driver.find_element_by_xpath("//*[@id='content-inner-block']/div[2]/div/div/div[2]/div/div[1]/div[1]/div/" \
                                                                       "div[3]/div/div/div[1]/div[1]/div[1]/div[2]/" \
                                                                       "div/p/a").click()                                  # Поиск елемента по XPATH и клик по нему
@@ -139,31 +143,5 @@ class rozetka_test(unittest.TestCase):
             driver.close()                                                                                                # Блок, который выполнится в любом случае
 
 unittest.main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
