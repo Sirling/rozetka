@@ -44,14 +44,15 @@ class rozetka_test(unittest.TestCase):
         driver = self.driver
 
         try:
-           driver.find_element_by_id("4306").click()                                                                      # Поиск елемента по айди и клик по нему
-           WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.LINK_TEXT, "Электрочайники")))               # Ожидание пока елемент не появится
-           driver.find_element_by_link_text("Электрочайники").click()                                                     # Поиск елемента по тексту и клик по нему
-           WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "")))
+           driver.find_element_by_id("4306").click()
+           WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.LINK_TEXT, "Электрочайники")))
+           driver.find_element_by_link_text("Электрочайники").click()
 
-           #driver.find_element_by_xpath("//*[@id='content-inner-block']/div[2]/div/div/div[2]/div/div[1]/div[1]/div/div[3]/div/div/div[1]/div[1]/div[1]/div[2]/div/p/a").click()                                  # Поиск елемента по XPATH и клик по нему
-           driver.find_element_by_xpath("//*[@id='menu_categories_left']/li[3]/ul/li[13]/a").click()
-           driver.find_element_by_link_text("Электрочайник PHILIPS HD9358/11").click()                                    # Поиск элемента по тексту и клик по нему
+           driver.find_element_by_xpath("//*[@id='content-inner-block']/div[2]/div/div/div[2]/div/div[1]/div[1]/div/" \
+                                                                      "div[3]/div/div/div[1]/div[1]/div[1]/div[2]/" \
+                                                                      "div/p/a").click()
+
+           driver.find_element_by_link_text("Электрочайник PHILIPS HD9358/11").click()                                 # Поиск элемента по тексту и клик по нему
            result = driver.current_url                                                                                    # Определение текущего урла
            self.assertEqual(result, "https://bt.rozetka.com.ua/philips_hd9358_11/p13296383/")                             # Сравнение ожидаемого урла с фактического
 
