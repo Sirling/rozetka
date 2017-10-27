@@ -1,4 +1,5 @@
 import unittest
+import xmlrunner
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
@@ -138,9 +139,4 @@ class rozetka_test(unittest.TestCase):
         finally:
             driver.close()                                                                                                # Блок, который выполнится в любом случае
 
-unittest.main()
-
-
-
-
-
+unittest.main(testRunner=xmlrunner.XMLTestRunner(output='test-reports'))
