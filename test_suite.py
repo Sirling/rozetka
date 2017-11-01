@@ -8,6 +8,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
+search_button = "div[class=rz-search-button-go-link]"
+
+
 class rozetka_test(unittest.TestCase):
     def setUp(self):                                                                                                      # Функция, которая вызывается перед каждым тестом
 
@@ -49,9 +52,7 @@ class rozetka_test(unittest.TestCase):
            WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.LINK_TEXT, "Электрочайники")))
            driver.find_element_by_link_text("Электрочайники").click()
 
-           driver.find_element_by_xpath("//*[@id='content-inner-block']/div[2]/div/div/div[2]/div/div[1]/div[1]/div/" \
-                                                                      "div[3]/div/div/div[1]/div[1]/div[1]/div[2]/" \
-                                                                      "div/p/a").click()
+           driver.find_element_by_css_selector("div").click()
 
            driver.find_element_by_link_text("Электрочайник PHILIPS HD9358/11").click()                                 # Поиск элемента по тексту и клик по нему
            result = driver.current_url                                                                                    # Определение текущего урла
@@ -74,7 +75,7 @@ class rozetka_test(unittest.TestCase):
         try:
             el_search = driver.find_element_by_class_name("rz-header-search-input-text")                                  # Поиск поля поиска по имени класса
             el_search.send_keys("PHILIPS HD9358/11")                                                                      # Заполнение найденого поля
-            driver.find_element_by_name("rz-search-button").click()                                                       # Клик по кнопке поиска
+            driver.find_element_by_css_selector(search_button).click()                                                       # Клик по кнопке поиска
             WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, "base_image")))                         # Ожидание появления картинки
 
             result = driver.current_url                                                                                   # Определение текущего урла
@@ -97,7 +98,7 @@ class rozetka_test(unittest.TestCase):
         try:
             el_search = driver.find_element_by_class_name("rz-header-search-input-text")                                  # Поиск поля поиска по имени класса
             el_search.send_keys("PHILIPS HD9358/11")                                                                      # Заполнение поля
-            driver.find_element_by_name("rz-search-button").click()                                                       # Поиск кнопки "поиск" по имени и клик по ней
+            driver.find_element_by_css_selector(search_button).click()                                                       # Поиск кнопки "поиск" по имени и клик по ней
             WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.NAME, "topurchases")))                      # Ожидание элемента
             driver.find_element_by_name("topurchases").click()                                                            # Клик по элементу
 
@@ -123,7 +124,7 @@ class rozetka_test(unittest.TestCase):
         try:
             el_search = driver.find_element_by_class_name("rz-header-search-input-text")                                  # Поиск элемента "поиск" по имнеи класса
             el_search.send_keys("Intel Core i7-6900K 3.2GHz/20MB")                                                        # Ввод текста в это поле
-            driver.find_element_by_name("rz-search-button").click()                                                       # Поиск кнопки "поиск" по имени и клик по ней
+            driver.find_element_by_css_selector(search_button).click()                                                       # Поиск кнопки "поиск" по имени и клик по ней
             WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, "base_image")))                         # Ожидание появления картинки по айди
 
 
@@ -139,4 +140,4 @@ class rozetka_test(unittest.TestCase):
         finally:
             driver.close()                                                                                                # Блок, который выполнится в любом случае
 
-unittest.main(testRunner=xmlrunner.XMLTestRunner(output='test-reports'))
+unittest.main(testRunner=xmlrunner.XMLTestRunner(verbosity=2, failfast=False, output='C:\\Work\\Jenkins\\workspace\\Rozetka\\test-reports'))
