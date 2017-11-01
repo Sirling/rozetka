@@ -52,7 +52,7 @@ class rozetka_test(unittest.TestCase):
            WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.LINK_TEXT, "Электрочайники")))
            driver.find_element_by_link_text("Электрочайники").click()
 
-           driver.find_element_by_css_selector("div").click()
+           driver.find_element_by_css_selector('div.class=rz-search-button-go-link').click()
 
            driver.find_element_by_link_text("Электрочайник PHILIPS HD9358/11").click()                                 # Поиск элемента по тексту и клик по нему
            result = driver.current_url                                                                                    # Определение текущего урла
