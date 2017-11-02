@@ -9,7 +9,11 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 search_button = "div[class=rz-search-button-go-link]"
-
+butovaya_tehnika_id = "4306"
+chainiki_linktext = "Электрочайники"
+metal_plastik = "img[title='Металл + пластик']"
+result_page = "https://bt.rozetka.com.ua/philips_hd9358_11/p13296383/"
+chainik_name = "Электрочайник PHILIPS HD9358/11"
 
 class rozetka_test(unittest.TestCase):
     def setUp(self):                                                                                                      # Функция, которая вызывается перед каждым тестом
@@ -48,15 +52,15 @@ class rozetka_test(unittest.TestCase):
         driver = self.driver
 
         try:
-           driver.find_element_by_id("4306").click()
-           WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.LINK_TEXT, "Электрочайники")))
-           driver.find_element_by_link_text("Электрочайники").click()
+           driver.find_element_by_id(butovaya_tehnika_id).click()
+           WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.LINK_TEXT, chainiki_linktext)))
+           driver.find_element_by_link_text(chainiki_linktext).click()
 
-           driver.find_element_by_css_selector('div.class=rz-search-button-go-link').click()
+           driver.find_element_by_css_selector(metal_plastik).click()
 
-           driver.find_element_by_link_text("Электрочайник PHILIPS HD9358/11").click()                                 # Поиск элемента по тексту и клик по нему
+           driver.find_element_by_link_text(chainik_name).click()                                                         # Поиск элемента по тексту и клик по нему
            result = driver.current_url                                                                                    # Определение текущего урла
-           self.assertEqual(result, "https://bt.rozetka.com.ua/philips_hd9358_11/p13296383/")                             # Сравнение ожидаемого урла с фактического
+           self.assertEqual(result, result_page)                                                                          # Сравнение ожидаемого урла с фактического
 
         except NoSuchElementException:                                                                                    # кетчи на случай ошибок
             self.fail("Element missing")
