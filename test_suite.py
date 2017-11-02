@@ -8,7 +8,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-search_button = "div[class=rz-search-button-go-link]"
+search_field_css = "input.rz-header-search-input-text.passive"
+search_button = "button.btn-link-i.js-rz-search-button"
 butovaya_tehnika_id = "4306"
 chainiki_linktext = "Электрочайники"
 metal_plastik = "img[title='Металл + пластик']"
@@ -77,13 +78,13 @@ class rozetka_test(unittest.TestCase):
         driver = self.driver
 
         try:
-            el_search = driver.find_element_by_class_name("rz-header-search-input-text")                                  # Поиск поля поиска по имени класса
+            el_search = driver.find_element_by_css_selector(search_field_css)                                             # Поиск поля поиска по имени класса
             el_search.send_keys("PHILIPS HD9358/11")                                                                      # Заполнение найденого поля
-            driver.find_element_by_css_selector(search_button).click()                                                       # Клик по кнопке поиска
+            driver.find_element_by_css_selector(search_button).click()                                                    # Клик по кнопке поиска
             WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, "base_image")))                         # Ожидание появления картинки
 
             result = driver.current_url                                                                                   # Определение текущего урла
-            self.assertEqual(result, "https://bt.rozetka.com.ua/philips_hd9358_11/p13296383/")                            # Сравнение ожидаемого урла с фактического
+            self.assertEqual(result, result_page)                                                                         # Сравнение ожидаемого урла с фактического
 
         except NoSuchElementException:                                                                                    # кетчи на случай ошибок
             self.fail("Element missing")
@@ -100,7 +101,7 @@ class rozetka_test(unittest.TestCase):
         driver = self.driver
 
         try:
-            el_search = driver.find_element_by_class_name("rz-header-search-input-text")                                  # Поиск поля поиска по имени класса
+            el_search = driver.find_element_by_css_selector(search_field_css)                                  # Поиск поля поиска по имени класса
             el_search.send_keys("PHILIPS HD9358/11")                                                                      # Заполнение поля
             driver.find_element_by_css_selector(search_button).click()                                                       # Поиск кнопки "поиск" по имени и клик по ней
             WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.NAME, "topurchases")))                      # Ожидание элемента
@@ -126,7 +127,7 @@ class rozetka_test(unittest.TestCase):
         driver = self.driver
 
         try:
-            el_search = driver.find_element_by_class_name("rz-header-search-input-text")                                  # Поиск элемента "поиск" по имнеи класса
+            el_search = driver.find_element_by_css_selector(search_field_css)                                  # Поиск элемента "поиск" по имнеи класса
             el_search.send_keys("Intel Core i7-6900K 3.2GHz/20MB")                                                        # Ввод текста в это поле
             driver.find_element_by_css_selector(search_button).click()                                                       # Поиск кнопки "поиск" по имени и клик по ней
             WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, "base_image")))                         # Ожидание появления картинки по айди
