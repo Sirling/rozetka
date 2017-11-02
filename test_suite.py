@@ -56,7 +56,7 @@ class rozetka_test(unittest.TestCase):
            driver.find_element_by_id(butovaya_tehnika_id).click()
            WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.LINK_TEXT, chainiki_linktext)))
            driver.find_element_by_link_text(chainiki_linktext).click()
-
+           WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR, metal_plastik)))
            driver.find_element_by_css_selector(metal_plastik).click()
 
            driver.find_element_by_link_text(chainik_name).click()                                                         # Поиск элемента по тексту и клик по нему
