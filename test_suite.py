@@ -147,3 +147,5 @@ class rozetka_test(unittest.TestCase):
 
 unittest.main(testRunner=xmlrunner.XMLTestRunner(verbosity=2, failfast=False, output='C:\\Work\\Jenkins\\workspace\\Rozetka\\test-reports'))
 
+
+
