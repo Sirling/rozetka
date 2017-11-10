@@ -146,3 +146,4 @@ class rozetka_test(unittest.TestCase):
             driver.close()                                                                                                # Блок, который выполнится в любом случае
 
 unittest.main(testRunner=xmlrunner.XMLTestRunner(verbosity=2, failfast=False, output='C:\\Work\\Jenkins\\workspace\\Rozetka\\test-reports'))
+
