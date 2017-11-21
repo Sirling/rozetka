@@ -14,7 +14,7 @@ butovaya_tehnika_id = "4306"
 chainiki_linktext = "Электрочайники"
 metal_plastik = "img[title='Металл + пластик']"
 result_page = "https://bt.rozetka.com.ua/philips_hd9358_11/p13296383/"
-chainik_name = "Электрочайник PHILIPS HD9358/11"
+chainik_name = "Электрочайник PHILIPS Viva Collection HD9358/11"
 
 class rozetka_test(unittest.TestCase):
     def setUp(self):                                                                                                      # Функция, которая вызывается перед каждым тестом
